@@ -34,6 +34,13 @@ class CountryResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('code')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('phonecode')
+                    ->tel()
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -42,6 +49,10 @@ class CountryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('code')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phonecode')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
