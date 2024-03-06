@@ -17,7 +17,7 @@ class StateResource extends Resource
 {
     protected static ?string $model = State::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-library';
+protected static ?string $navigationIcon = 'heroicon-o-building-library';
 
     protected static ?string $navigationLabel = 'State';
 
@@ -43,10 +43,12 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('country_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('country.name')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('State name')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -56,7 +58,7 @@ class StateResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
+            ])->defaultSort('country.name', 'desc')
             ->filters([
                 //
             ])
@@ -68,6 +70,9 @@ class StateResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->emptyStateActions([
+                Tables\Actions\CreateAction::make(),
             ]);
     }
 
