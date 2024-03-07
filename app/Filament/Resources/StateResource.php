@@ -96,7 +96,8 @@ protected static ?string $navigationIcon = 'heroicon-o-building-library';
     public static function getRelations(): array
     {
         return [
-            //
+            CitiesRelationManager::class,
+            EmployeesRelationManager::class
         ];
     }
 
