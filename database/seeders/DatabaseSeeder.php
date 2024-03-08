@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        \App\Models\User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'piyaro@gmail.com',
+            'is_admin' => true
+        ]);
+
         // $this->call(CountrySeeder::class);
         // $this->call(StateSeeder::class);
         // $this->call(CitySeeder::class);
