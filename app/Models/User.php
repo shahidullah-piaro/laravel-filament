@@ -66,8 +66,8 @@ class User extends Authenticatable implements HasTenants
         return $this->teams->contains($tenant);
     }
 
-    public function isAdmin(): bool
-    {
-        return $this->email === 'piyaro@gmail.com';
-    }
+    // public function isAdmin(): bool
+    // {
+    //     return $this->email === 'piyaro@gmail.com';
+    // }
 }
